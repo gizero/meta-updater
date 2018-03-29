@@ -12,6 +12,7 @@ do_image_ostree[depends] += "ostree-native:do_populate_sysroot \
 export OSTREE_REPO
 export OSTREE_BRANCHNAME
 export GARAGE_TARGET_NAME
+export SOTA_HARDWARE_ID
 
 RAMDISK_EXT ?= ".ext4.gz"
 RAMDISK_EXT_arm ?= ".ext4.gz.u-boot"
@@ -218,7 +219,7 @@ IMAGE_CMD_garagesign () {
                                     --length 0 \
                                     --url "https://example.com/" \
                                     --sha256 ${ostree_target_hash} \
-                                    --hardwareids ${MACHINE}
+                                    --hardwareids ${SOTA_HARDWARE_ID}
             garage-sign targets sign --repo tufrepo \
                                      --home-dir ${GARAGE_SIGN_REPO} \
                                      --key-name=targets
